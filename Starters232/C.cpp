@@ -1,30 +1,39 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+typedef long long ll;
+
 void solve()
 {
     int n;
     cin >> n;
 
-    vector<int> a(n);
+    vector<int> arr(n), diffArr;
+    unordered_map<int, int> ump;
+    
     for (int i = 0; i < n; i++)
     {
-        cin >> a[i];
+        cin >> arr[i];
     }
 
-    map<int, long long> freq;
-    for (int i = 0; i < n; i++)
+    for(int i = 0; i < n; i++)
     {
-        freq[a[i] - (i + 1)]++;
+        diffArr.push_back((arr[i] - i));
     }
 
-    long long pairs = 0;
-    for (auto &[key, cnt] : freq)
+    for(auto it : diffArr)
     {
-        pairs += cnt * (cnt - 1) / 2;
+        ump[it]++;
     }
 
-    cout << pairs << "\n";
+    ll ans = 0;
+    for(auto x : ump)
+    {
+        ll k = x.second;
+        ans += (k * (k - 1)) / 2;
+    }
+    
+    cout << ans << "\n";
 }
 
 int main()
