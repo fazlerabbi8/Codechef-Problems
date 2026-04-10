@@ -1,0 +1,75 @@
+// #include <bits/stdc++.h>
+
+// using namespace std;
+
+// int main() {
+//     int T;
+//     cin >> T;
+//     while (T--) {
+//         int N, K;
+//         cin >> N >> K;
+//         vector < int > arr(N);
+//         for (int i = 0; i < N; i++) cin >> arr[i];
+
+//         sort(arr.begin(), arr.end());
+
+//         int M = N - K;
+//         int left = (M - 1) / 2;
+//         int right = N - (M - left);
+
+//         for (int i = left; i <= right; i++) {
+//             if (i == left || arr[i] != arr[i - 1]) {
+//                 cout << arr[i] << " ";
+//             }
+//         }
+//         cout << "\n";
+
+
+
+//     }
+// }
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+void solve()
+{
+    int n, k;
+    cin >> n >> k;
+
+    vector<int> arr(n);
+    for (int i = 0; i < n; i++)
+    {
+        cin >> arr[i];
+    }
+
+    sort(arr.begin(), arr.end());
+
+    int remainingElement = n - k;
+    int left = (remainingElement - 1) / 2;
+    int right = n - (remainingElement - left);
+
+    for (int i = left; i <= right; i++)
+    {
+        if(i == left || arr[i] != arr[i - 1])
+        {
+            cout << arr[i] << " ";
+        }
+    }
+    cout << "\n";
+}
+
+int main()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+
+    int t;
+    cin >> t;
+
+    while (t--)
+    {
+        solve();
+    }
+}
